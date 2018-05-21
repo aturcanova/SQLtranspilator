@@ -18,13 +18,35 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitMain(ParserParser.MainContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ParserParser#name}.
+	 * Enter a parse tree produced by {@link ParserParser#statement_keyword}.
 	 * @param ctx the parse tree
 	 */
-	void enterName(ParserParser.NameContext ctx);
+	void enterStatement_keyword(ParserParser.Statement_keywordContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ParserParser#name}.
+	 * Exit a parse tree produced by {@link ParserParser#statement_keyword}.
 	 * @param ctx the parse tree
 	 */
-	void exitName(ParserParser.NameContext ctx);
+	void exitStatement_keyword(ParserParser.Statement_keywordContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code params}
+	 * labeled alternative in {@link ParserParser#select_params}.
+	 * @param ctx the parse tree
+	 */
+	void enterParams(ParserParser.ParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code params}
+	 * labeled alternative in {@link ParserParser#select_params}.
+	 * @param ctx the parse tree
+	 */
+	void exitParams(ParserParser.ParamsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void enterTable(ParserParser.TableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void exitTable(ParserParser.TableContext ctx);
 }

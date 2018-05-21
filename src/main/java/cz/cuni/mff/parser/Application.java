@@ -8,9 +8,9 @@ import org.antlr.v4.runtime.CommonTokenStream;
 public class Application {
 
     public static void main(String[] args){
-        ParserLexer lexer = new ParserLexer(CharStreams.fromString("Hello John!"));
+        ParserLexer lexer = new ParserLexer(CharStreams.fromString("SELECT deptno FROM employee ;"));
         ParserParser parser = new ParserParser(new CommonTokenStream(lexer));
-
-        String name = parser.main().name().getText();
+        parser.main();
+        //String name = parser.main().name().getText();
     }
 }
