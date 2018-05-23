@@ -18,8 +18,8 @@ statement_type:
     ;
 
 select_statement:
-    SELECT WS select_parameters WS from_statement |
-    SELECT WS par=select_parameters WS from_statement WS select_stmnt { System.out.println("Here is select statement!"); }
+    (SEL | SELECT) WS select_parameters WS from_statement |
+    (SEL | SELECT) WS par=select_parameters WS from_statement WS select_stmnt { System.out.println("Here is select statement!"); }
     ;
 
 select_stmnt:
@@ -75,8 +75,37 @@ columns:
     column_name
     ;
 
-insert_into_statement: ;
-update_statement: ;
+insert_into_statement: INSERT WS INTO WS table_name WS insert_into_stmnt;
+
+insert_into_stmnt:
+    instert_values |
+    select_statement |
+    insert_columns WS instert_values |
+    insert_columns WS select_statement
+    ;
+
+insert_columns:  LEFT_BRACKET columns RIGHT_BRACKET ;
+
+instert_values: VALUES WS LEFT_BRACKET values RIGHT_BRACKET ;
+
+values:
+    value |
+    value COMMA WS values
+    ;
+
+value: TOKEN ; //TODO int float varchar or w/e
+
+update_statement: UPDATE WS table_name WS SET WS update_stmnt ;
+
+update_stmnt:
+    update_columns |
+    update_columns WS where_statement
+    ;
+
+update_columns:
+    column_name EQUALITY value |
+    column_name EQUALITY value COMMA WS update_columns
+    ;
 
 delete_statement: (DEL|DELETE) WS delete_stmnt ;
 
@@ -174,9 +203,16 @@ TO: 'TO';
 AS: 'AS';
 DEL: 'DEL';
 DELETE: 'DELETE';
+SEL:'SEL';
+INSERT: 'INSERT';
+INTO: 'INTO';
+VALUES: 'VALUES';
+UPDATE: 'UPDATE';
+
 
 LEFT_BRACKET: '(';
 RIGHT_BRACKET: ')';
+EQUALITY: '=';
 
 SEMICOLON: ';';
 COMMA: ',';
