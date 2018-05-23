@@ -558,6 +558,26 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitAggregation_function(ParserParser.Aggregation_functionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#aggregation_fnc}.
+	 * @param ctx the parse tree
+	 */
+	void enterAggregation_fnc(ParserParser.Aggregation_fncContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#aggregation_fnc}.
+	 * @param ctx the parse tree
+	 */
+	void exitAggregation_fnc(ParserParser.Aggregation_fncContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#agreggation_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterAgreggation_parameter(ParserParser.Agreggation_parameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#agreggation_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitAgreggation_parameter(ParserParser.Agreggation_parameterContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#column_definition}.
 	 * @param ctx the parse tree
 	 */

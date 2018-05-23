@@ -29,6 +29,7 @@ select_stmnt:
     ;
 
 select_parameters:
+    ASTERISK |
     select_distinct_all WS select_params |
     select_distinct_all WS select_params WS COMMA WS select_parameters |
     select_params |
@@ -226,7 +227,20 @@ drop_stmnt:
 
 view_name: name ;
 
-aggregation_function: ; //TODO
+aggregation_function:
+    COUNT aggregation_fnc |
+    SUM aggregation_fnc |
+    MAX aggregation_fnc |
+    MIN aggregation_fnc |
+    AVG aggregation_fnc
+    ;
+
+aggregation_fnc: LEFT_BRACKET agreggation_parameter RIGHT_BRACKET ;
+
+agreggation_parameter:
+    ASTERISK |
+    column
+    ;
 
 column_definition: column_name WS column_type ;
 
@@ -302,6 +316,11 @@ FULL: 'FULL';
 RIGHT: 'RIGHT';
 LEFT: 'LEFT';
 OUTER: 'OUTER';
+COUNT: 'COUNT';
+SUM: 'SUM';
+MAX: 'MAX';
+MIN: 'MIN';
+AVG: 'AVG';
 
 // data types
 BYTEINT: 'BYTEINT';
@@ -332,6 +351,7 @@ APOSTROF: '\'';
 SEMICOLON: ';';
 COMMA: ',';
 DOT: '.';
+ASTERISK: '*';
 
 // regular expressions
 NAME: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
@@ -341,8 +361,6 @@ INT: ('1'..'9')('0'..'9')* ;
 WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
 ANY: .;
 
-//TODO: aggregations
-//TODO: db name
 //TODO: indices
 //TODO: INSERT INTO DATETAB VALUES (DATE '2001-12-20');
 //TODO: dates
