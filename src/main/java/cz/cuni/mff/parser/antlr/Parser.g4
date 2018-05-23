@@ -66,9 +66,9 @@ having_statement: HAVING WS conditions;
 
 order_by_statement: ORDER WS BY WS columns ; //TODO ASC DES
 
-tables: table ; //TODO: more tables
+tables: table_name ; //TODO: more table_names
 
-table: TOKEN;
+table_name: TOKEN;
 
 columns:
     column_name WS COMMA columns |
@@ -77,14 +77,49 @@ columns:
 
 insert_into_statement: ;
 update_statement: ;
-delete_statement: ;
-create_statement: ;
+
+delete_statement: (DEL|DELETE) WS delete_stmnt ;
+
+delete_stmnt:
+    delete_database |
+    delete_from
+    ;
+
+delete_database: DATABASE WS database_name ;
+
+delete_from:
+    FROM WS table_name |
+    FROM WS table_name WS where_statement
+    ;
+
+database_name: TOKEN ; //TODO
+
+create_statement: CREATE WS create_stmnt ;
+
+create_stmnt:
+    create_table |
+    create_view
+    ;
+
+create_table: TABLE WS table_name WS LEFT_BRACKET WS columns_definition WS RIGHT_BRACKET ;
+
+create_view:
+    VIEW WS table_name WS AS WS select_statement |
+    VIEW WS table_name WS create_view_columns WS AS WS select_statement
+    ;
+
+create_view_columns: columns ;
+
+columns_definition: //TODO: check
+    column_definition |
+    column_definition COMMA WS columns_definition
+    ;
 
 alter_statement: ALTER WS alter_stmnt;
 
 alter_stmnt: alter_table ; //TODO: TYPE
 
-alter_table: TABLE WS table WS alter_tab ;
+alter_table: TABLE WS table_name WS alter_tab ;
 
 alter_tab:
     rename_statement |
@@ -98,10 +133,12 @@ add_statement: ADD WS column_definition ; //TODO: check column deinition 'column
 drop_statement: DROP WS drop_stmnt ;
 
 drop_stmnt:
-    TABLE WS table |
-    VIEW WS table | //TODO
+    TABLE WS table_name |
+    VIEW WS view_name | //TODO
     COLUMN WS column_name //TODO: indices
     ;
+
+view_name: TOKEN; //TODO
 
 column_definition: TOKEN ; //TODO: column definition
 
@@ -134,6 +171,9 @@ KEY: 'KEY';
 UNIQUE: 'UNIQUE';
 RENAME: 'RENAME';
 TO: 'TO';
+AS: 'AS';
+DEL: 'DEL';
+DELETE: 'DELETE';
 
 LEFT_BRACKET: '(';
 RIGHT_BRACKET: ')';

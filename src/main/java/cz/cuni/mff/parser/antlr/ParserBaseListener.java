@@ -220,13 +220,13 @@ public class ParserBaseListener implements ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTable(ParserParser.TableContext ctx) { }
+	@Override public void enterTable_name(ParserParser.Table_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTable(ParserParser.TableContext ctx) { }
+	@Override public void exitTable_name(ParserParser.Table_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -280,6 +280,54 @@ public class ParserBaseListener implements ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDelete_stmnt(ParserParser.Delete_stmntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDelete_stmnt(ParserParser.Delete_stmntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDelete_database(ParserParser.Delete_databaseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDelete_database(ParserParser.Delete_databaseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDelete_from(ParserParser.Delete_fromContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDelete_from(ParserParser.Delete_fromContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDatabase_name(ParserParser.Database_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDatabase_name(ParserParser.Database_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCreate_statement(ParserParser.Create_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -287,6 +335,66 @@ public class ParserBaseListener implements ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCreate_statement(ParserParser.Create_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreate_stmnt(ParserParser.Create_stmntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreate_stmnt(ParserParser.Create_stmntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreate_table(ParserParser.Create_tableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreate_table(ParserParser.Create_tableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreate_view(ParserParser.Create_viewContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreate_view(ParserParser.Create_viewContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreate_view_columns(ParserParser.Create_view_columnsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreate_view_columns(ParserParser.Create_view_columnsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColumns_definition(ParserParser.Columns_definitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColumns_definition(ParserParser.Columns_definitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -383,6 +491,18 @@ public class ParserBaseListener implements ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDrop_stmnt(ParserParser.Drop_stmntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterView_name(ParserParser.View_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitView_name(ParserParser.View_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

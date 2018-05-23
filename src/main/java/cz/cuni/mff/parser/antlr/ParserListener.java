@@ -178,15 +178,15 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitTables(ParserParser.TablesContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ParserParser#table}.
+	 * Enter a parse tree produced by {@link ParserParser#table_name}.
 	 * @param ctx the parse tree
 	 */
-	void enterTable(ParserParser.TableContext ctx);
+	void enterTable_name(ParserParser.Table_nameContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ParserParser#table}.
+	 * Exit a parse tree produced by {@link ParserParser#table_name}.
 	 * @param ctx the parse tree
 	 */
-	void exitTable(ParserParser.TableContext ctx);
+	void exitTable_name(ParserParser.Table_nameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#columns}.
 	 * @param ctx the parse tree
@@ -228,6 +228,46 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitDelete_statement(ParserParser.Delete_statementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#delete_stmnt}.
+	 * @param ctx the parse tree
+	 */
+	void enterDelete_stmnt(ParserParser.Delete_stmntContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#delete_stmnt}.
+	 * @param ctx the parse tree
+	 */
+	void exitDelete_stmnt(ParserParser.Delete_stmntContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#delete_database}.
+	 * @param ctx the parse tree
+	 */
+	void enterDelete_database(ParserParser.Delete_databaseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#delete_database}.
+	 * @param ctx the parse tree
+	 */
+	void exitDelete_database(ParserParser.Delete_databaseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#delete_from}.
+	 * @param ctx the parse tree
+	 */
+	void enterDelete_from(ParserParser.Delete_fromContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#delete_from}.
+	 * @param ctx the parse tree
+	 */
+	void exitDelete_from(ParserParser.Delete_fromContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#database_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterDatabase_name(ParserParser.Database_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#database_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitDatabase_name(ParserParser.Database_nameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#create_statement}.
 	 * @param ctx the parse tree
 	 */
@@ -237,6 +277,56 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCreate_statement(ParserParser.Create_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#create_stmnt}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreate_stmnt(ParserParser.Create_stmntContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#create_stmnt}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreate_stmnt(ParserParser.Create_stmntContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#create_table}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreate_table(ParserParser.Create_tableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#create_table}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreate_table(ParserParser.Create_tableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#create_view}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreate_view(ParserParser.Create_viewContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#create_view}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreate_view(ParserParser.Create_viewContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#create_view_columns}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreate_view_columns(ParserParser.Create_view_columnsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#create_view_columns}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreate_view_columns(ParserParser.Create_view_columnsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#columns_definition}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumns_definition(ParserParser.Columns_definitionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#columns_definition}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumns_definition(ParserParser.Columns_definitionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#alter_statement}.
 	 * @param ctx the parse tree
@@ -317,6 +407,16 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDrop_stmnt(ParserParser.Drop_stmntContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#view_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterView_name(ParserParser.View_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#view_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitView_name(ParserParser.View_nameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#column_definition}.
 	 * @param ctx the parse tree
