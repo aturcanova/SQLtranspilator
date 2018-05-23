@@ -178,6 +178,16 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitOrder_by_statement(ParserParser.Order_by_statementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#columns_sorted}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumns_sorted(ParserParser.Columns_sortedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#columns_sorted}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumns_sorted(ParserParser.Columns_sortedContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#tables}.
 	 * @param ctx the parse tree
 	 */
@@ -188,6 +198,16 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitTables(ParserParser.TablesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void enterTable(ParserParser.TableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void exitTable(ParserParser.TableContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#table_name}.
 	 * @param ctx the parse tree
 	 */
@@ -197,6 +217,16 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTable_name(ParserParser.Table_nameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#join}.
+	 * @param ctx the parse tree
+	 */
+	void enterJoin(ParserParser.JoinContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#join}.
+	 * @param ctx the parse tree
+	 */
+	void exitJoin(ParserParser.JoinContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#columns}.
 	 * @param ctx the parse tree
@@ -257,16 +287,6 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValues(ParserParser.ValuesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ParserParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void enterValue(ParserParser.ValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ParserParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void exitValue(ParserParser.ValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#update_statement}.
 	 * @param ctx the parse tree
@@ -518,6 +538,16 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitColumn_definition(ParserParser.Column_definitionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#column_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumn_type(ParserParser.Column_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#column_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumn_type(ParserParser.Column_typeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#name}.
 	 * @param ctx the parse tree
 	 */
@@ -527,4 +557,14 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitName(ParserParser.NameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(ParserParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(ParserParser.ValueContext ctx);
 }

@@ -121,8 +121,6 @@ values:
     value COMMA WS values
     ;
 
-value: TOKEN ; //TODO int float varchar or w/e
-
 update_statement: UPDATE WS table_name WS SET WS update_stmnt ;
 
 update_stmnt:
@@ -212,6 +210,8 @@ column_definition: column_name WS column_type ;
 column_type: TOKEN ; //TODO
 
 name: NAME ;
+
+value: TOKEN ; //TODO int float varchar or w/e
 
 //TODO: aggregations
 //TODO: db name

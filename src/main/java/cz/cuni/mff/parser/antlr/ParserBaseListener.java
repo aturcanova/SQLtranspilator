@@ -220,6 +220,18 @@ public class ParserBaseListener implements ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterColumns_sorted(ParserParser.Columns_sortedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColumns_sorted(ParserParser.Columns_sortedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTables(ParserParser.TablesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -232,6 +244,18 @@ public class ParserBaseListener implements ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTable(ParserParser.TableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTable(ParserParser.TableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTable_name(ParserParser.Table_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -239,6 +263,18 @@ public class ParserBaseListener implements ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTable_name(ParserParser.Table_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJoin(ParserParser.JoinContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJoin(ParserParser.JoinContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -311,18 +347,6 @@ public class ParserBaseListener implements ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValues(ParserParser.ValuesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValue(ParserParser.ValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValue(ParserParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -628,6 +652,18 @@ public class ParserBaseListener implements ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterColumn_type(ParserParser.Column_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColumn_type(ParserParser.Column_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterName(ParserParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -635,6 +671,18 @@ public class ParserBaseListener implements ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitName(ParserParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValue(ParserParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValue(ParserParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
