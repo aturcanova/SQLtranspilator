@@ -39,17 +39,22 @@ select_distinct_all:
     ;
 
 select_params:
-    column_name |
-    column_name WS COMMA WS select_params
+    column |
+    column WS COMMA WS select_params
     ;
 
-column_name: TOKEN ; //TODO
+column:
+    column_name |
+    table_name DOT column_name
+    ;
 
-from_statement: FROM WS tables ; //TODO
+column_name: name ;
+
+from_statement: FROM WS tables ;
 
 where_statement: WHERE WS conditions ;
 
-conditions: //TODO
+conditions: //TODO: where conditions
     TOKEN
     ;
 
@@ -64,15 +69,38 @@ group_by_statment: GROUP WS BY WS columns WS having_statement |
 
 having_statement: HAVING WS conditions;
 
-order_by_statement: ORDER WS BY WS columns ; //TODO ASC DES
+order_by_statement: ORDER WS BY WS columns_sorted ;
 
-tables: table_name ; //TODO: more table_names
+columns_sorted:
+    column WS ASC |
+    column WS DESC |
+    column WS COMMA columns_sorted
+    ;
 
-table_name: TOKEN;
+tables:
+    table |
+    table WS join WS tables
+    ;
+
+table:
+    table_name |
+    LEFT_BRACKET select_statement RIGHT_BRACKET
+    ;
+
+table_name: name;
+
+join:
+    COMMA |
+    JOIN |
+    NATURAL WS JOIN |
+    CROSS WS JOIN |
+    INNER WS JOIN |
+    (FULL | RIGHT | LEFT) WS OUTER WS JOIN
+    ;
 
 columns:
-    column_name WS COMMA columns |
-    column_name
+    column |
+    column WS COMMA columns
     ;
 
 insert_into_statement: INSERT WS INTO WS table_name WS insert_into_stmnt;
@@ -121,7 +149,7 @@ delete_from:
     FROM WS table_name WS where_statement
     ;
 
-database_name: TOKEN ; //TODO
+database_name: name ;
 
 create_statement: CREATE WS create_stmnt ;
 
@@ -139,37 +167,55 @@ create_view:
 
 create_view_columns: columns ;
 
-columns_definition: //TODO: check
+columns_definition:
     column_definition |
     column_definition COMMA WS columns_definition
     ;
 
 alter_statement: ALTER WS alter_stmnt;
 
-alter_stmnt: alter_table ; //TODO: TYPE
+alter_stmnt: alter_table ;
 
 alter_table: TABLE WS table_name WS alter_tab ;
 
 alter_tab:
     rename_statement |
-    add_statement
+    rename_statement WS alter_tab |
+    add_statement |
+    add_statement WS alter_tab |
+    drop_columns |
+    drop_columns WS alter_tab
     ;
 
 rename_statement: RENAME WS column_name WS TO WS column_name ;
 
-add_statement: ADD WS column_definition ; //TODO: check column deinition 'column_name WS datatype'
+add_statement: ADD WS column_definition ; //TODO: check column definition 'column_name WS datatype'
+
+drop_columns:
+    DROP WS column_name |
+    DROP WS column_name WS drop_columns
+    ;
 
 drop_statement: DROP WS drop_stmnt ;
 
 drop_stmnt:
+    DATABASE database_name |
     TABLE WS table_name |
-    VIEW WS view_name | //TODO
-    COLUMN WS column_name //TODO: indices
+    VIEW WS view_name |
+    COLUMN WS column_name
     ;
 
-view_name: TOKEN; //TODO
+view_name: name ;
 
-column_definition: TOKEN ; //TODO: column definition
+column_definition: column_name WS column_type ;
+
+column_type: TOKEN ; //TODO
+
+name: NAME ;
+
+//TODO: aggregations
+//TODO: db name
+//TODO: indices
 
 SELECT: 'SELECT';
 FROM: 'FROM';
@@ -208,7 +254,14 @@ INSERT: 'INSERT';
 INTO: 'INTO';
 VALUES: 'VALUES';
 UPDATE: 'UPDATE';
-
+JOIN: 'JOIN';
+NATURAL: 'NATURAL';
+CROSS: 'CROSS';
+INNER: 'INNER';
+FULL: 'FULL';
+RIGHT: 'RIGHT';
+LEFT: 'LEFT';
+OUTER: 'OUTER';
 
 LEFT_BRACKET: '(';
 RIGHT_BRACKET: ')';
@@ -216,8 +269,10 @@ EQUALITY: '=';
 
 SEMICOLON: ';';
 COMMA: ',';
+DOT: '.';
 WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
 
 TOKEN: ('a'..'z'|'A'..'Z')+;
+NAME: ('a'..'z'|'A'..'Z'| '_' | '$')('a'..'z'|'A'..'Z'| '0'..'9' | '_' | '$')*;
 
 ANY: .;
