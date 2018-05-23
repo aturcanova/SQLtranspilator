@@ -25,7 +25,7 @@ select_statement:
 select_stmnt:
     where_statement |
     where_statement WS order_by_statement |
-    where_statement WS group_by_statment WS order_by_statement |
+    where_statement WS group_by_statment WS order_by_statement
     ;
 
 select_parameters:
@@ -35,7 +35,7 @@ select_parameters:
 
 select_distinct_all:
     DISTINCT |
-    ALL |
+    ALL
     ;
 
 select_params:
@@ -63,11 +63,12 @@ logical_ops: //TODO
     OR
     ;
 
-group_by_statment: GROUP WS BY WS columns WS having_statement |
+group_by_statment:
+    GROUP WS BY WS columns WS having_statement |
     GROUP WS BY WS columns
     ;
 
-having_statement: HAVING WS conditions;
+having_statement: HAVING WS conditions ;
 
 order_by_statement: ORDER WS BY WS columns_sorted ;
 
@@ -187,7 +188,7 @@ alter_tab:
 
 rename_statement: RENAME WS column_name WS TO WS column_name ;
 
-add_statement: ADD WS column_definition ; //TODO: check column definition 'column_name WS datatype'
+add_statement: ADD WS column_definition ;
 
 drop_columns:
     DROP WS column_name |
@@ -207,16 +208,33 @@ view_name: name ;
 
 column_definition: column_name WS column_type ;
 
-column_type: TOKEN ; //TODO
+column_type: type ;
 
 name: NAME ;
 
-value: TOKEN ; //TODO int float varchar or w/e
+type:
+    BYTEINT |
+    SMALLINT |
+    INTEGER |
+    BIGINT |
+    DECIMAL |
+    NUMERIC |
+    FLOAT |
+    CHAR |
+    CHAR LEFT_BRACKET INT RIGHT_BRACKET |
+    VARCHAR |
+    VARCHAR LEFT_BRACKET INT RIGHT_BRACKET |
+    DATE |
+    TIME |
+    TIMESTAMP
+    ;
 
-//TODO: aggregations
-//TODO: db name
-//TODO: indices
+value:
+    APOSTROF value APOSTROF |
+    ANY+
+    ;
 
+// key words
 SELECT: 'SELECT';
 FROM: 'FROM';
 WHERE: 'WHERE';
@@ -263,16 +281,41 @@ RIGHT: 'RIGHT';
 LEFT: 'LEFT';
 OUTER: 'OUTER';
 
+// data types
+BYTEINT: 'BYTEINT';
+SMALLINT: 'SMALLINT';
+INTEGER: 'INTEGER';
+BIGINT: 'BIGINT';
+DECIMAL: 'DECIMAL';
+NUMERIC: 'NUMERIC';
+FLOAT: 'FLOAT';
+CHAR: 'CHAR';
+VARCHAR: 'VARCHAR';
+DATE: 'DATE';
+TIME: 'TIME';
+TIMESTAMP: 'TIMESTAMP';
+
+// special characters
 LEFT_BRACKET: '(';
 RIGHT_BRACKET: ')';
 EQUALITY: '=';
-
+QUOT_MARKS: '"';
+APOSTROF: '\'';
 SEMICOLON: ';';
 COMMA: ',';
 DOT: '.';
-WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
 
-TOKEN: ('a'..'z'|'A'..'Z')+;
-NAME: ('a'..'z'|'A'..'Z'| '_' | '$')('a'..'z'|'A'..'Z'| '0'..'9' | '_' | '$')*;
+// regular expressions
+NAME: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
+WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
+TOKEN: ('a'..'z'|'A'..'Z')+ ;
+INT: ('1'..'9')('0'..'9')* ;
 
 ANY: .;
+
+//TODO: aggregations
+//TODO: db name
+//TODO: indices
+//TODO: INSERT INTO DATETAB VALUES (DATE '2001-12-20');
+//TODO: dates
+//TODO: special chars in strings

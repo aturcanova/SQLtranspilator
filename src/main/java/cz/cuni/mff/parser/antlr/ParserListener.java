@@ -558,6 +558,16 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitName(ParserParser.NameContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterType(ParserParser.TypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitType(ParserParser.TypeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#value}.
 	 * @param ctx the parse tree
 	 */
