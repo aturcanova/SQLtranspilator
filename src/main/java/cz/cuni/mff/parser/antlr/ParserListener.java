@@ -138,6 +138,26 @@ public interface ParserListener extends ParseTreeListener {
 	 */
 	void exitConditions(ParserParser.ConditionsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ParserParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(ParserParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(ParserParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#equality_ops}.
+	 * @param ctx the parse tree
+	 */
+	void enterEquality_ops(ParserParser.Equality_opsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#equality_ops}.
+	 * @param ctx the parse tree
+	 */
+	void exitEquality_ops(ParserParser.Equality_opsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ParserParser#logical_ops}.
 	 * @param ctx the parse tree
 	 */
@@ -527,6 +547,16 @@ public interface ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitView_name(ParserParser.View_nameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ParserParser#aggregation_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterAggregation_function(ParserParser.Aggregation_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ParserParser#aggregation_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitAggregation_function(ParserParser.Aggregation_functionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ParserParser#column_definition}.
 	 * @param ctx the parse tree

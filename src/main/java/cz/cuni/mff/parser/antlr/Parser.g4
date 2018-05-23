@@ -29,8 +29,10 @@ select_stmnt:
     ;
 
 select_parameters:
+    select_distinct_all WS select_params |
+    select_distinct_all WS select_params WS COMMA WS select_parameters |
     select_params |
-    select_distinct_all WS select_params
+    select_params  WS COMMA WS select_parameters
     ;
 
 select_distinct_all:
@@ -39,8 +41,8 @@ select_distinct_all:
     ;
 
 select_params:
-    column |
-    column WS COMMA WS select_params
+    aggregation_function |
+    column
     ;
 
 column:
@@ -54,11 +56,29 @@ from_statement: FROM WS tables ;
 
 where_statement: WHERE WS conditions ;
 
-conditions: //TODO: where conditions
-    TOKEN
+conditions:
+    (NOT WS)? condition |
+    (NOT WS)? condition WS logical_ops WS conditions
     ;
 
-logical_ops: //TODO
+condition:
+    column equality_ops value |
+    column equality_ops WS value |
+    column WS equality_ops value |
+    column WS equality_ops WS value |
+    ;
+
+equality_ops:
+    EQUALITY |
+    LT |
+    LE |
+    GT |
+    GE |
+    NE |
+    NEQL
+    ;
+
+logical_ops:
     AND |
     OR
     ;
@@ -206,6 +226,8 @@ drop_stmnt:
 
 view_name: name ;
 
+aggregation_function: ; //TODO
+
 column_definition: column_name WS column_type ;
 
 column_type: type ;
@@ -230,8 +252,8 @@ type:
     ;
 
 value:
-    APOSTROF value APOSTROF |
-    ANY+
+    NAME |
+    APOSTROF value APOSTROF
     ;
 
 // key words
@@ -299,6 +321,12 @@ TIMESTAMP: 'TIMESTAMP';
 LEFT_BRACKET: '(';
 RIGHT_BRACKET: ')';
 EQUALITY: '=';
+LT: '<';
+LE: '<=';
+GT: '>';
+GE: '>=';
+NE: '!=';
+NEQL: '<>';
 QUOT_MARKS: '"';
 APOSTROF: '\'';
 SEMICOLON: ';';
@@ -307,10 +335,10 @@ DOT: '.';
 
 // regular expressions
 NAME: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
-WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
 TOKEN: ('a'..'z'|'A'..'Z')+ ;
 INT: ('1'..'9')('0'..'9')* ;
 
+WS: (' ' | '\t' | '\n' )+ ; //{ $channel = HIDDEN; } ;
 ANY: .;
 
 //TODO: aggregations
@@ -319,3 +347,4 @@ ANY: .;
 //TODO: INSERT INTO DATETAB VALUES (DATE '2001-12-20');
 //TODO: dates
 //TODO: special chars in strings
+//TODO: advanced where conditions with brackets
