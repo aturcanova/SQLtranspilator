@@ -17,6 +17,7 @@ statement_type returns [String code=null]
     | create_statement { $code = $create_statement.code; }
     | alter_statement { $code = $alter_statement.code; }
     | drop_statement { $code = $drop_statement.code; }
+    | EOF
     ;
 
 select_statement returns [String code=null]
@@ -406,6 +407,7 @@ ASTERISK: '*';
 NAME: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
 INT: ('1'..'9')('0'..'9')* ;
 WS: (' ' | '\t' | '\n' |'\r')+ ; //{ $channel = HIDDEN; } ;
+
 
 //TODO: indices
 //TODO: INSERT INTO DATETAB VALUES (DATE '2001-12-20');
