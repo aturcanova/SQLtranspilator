@@ -407,10 +407,3 @@ ASTERISK: '*';
 NAME: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
 INT: ('1'..'9')('0'..'9')* ;
 WS: (' ' | '\t' | '\n' |'\r')+ ; //{ $channel = HIDDEN; } ;
-
-
-//TODO: indices
-//TODO: INSERT INTO DATETAB VALUES (DATE '2001-12-20');
-//TODO: dates
-//TODO: special chars in strings
-//TODO: advanced where conditions with brackets

@@ -169,7 +169,14 @@ public class ParserParser extends Parser {
 			{
 			setState(130);
 			((MainContext)_localctx).statement = statement();
-			 ((MainContext)_localctx).code =  ((MainContext)_localctx).statement.code; 
+
+			        if (((MainContext)_localctx).statement.code.equals("null")){
+			            ((MainContext)_localctx).code =  "-- Query \"(((MainContext)_localctx).statement!=null?_input.getText(((MainContext)_localctx).statement.start,((MainContext)_localctx).statement.stop):null)\" couldn't be translated";
+			            System.out.println("Query could not be translated");
+			        } else {
+			            ((MainContext)_localctx).code =  ((MainContext)_localctx).statement.code;
+			        }
+			    
 			}
 		}
 		catch (RecognitionException re) {
